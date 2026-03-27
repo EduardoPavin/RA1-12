@@ -22,6 +22,12 @@ seg7_table:
   .byte 0x07
   .byte 0x7f
   .byte 0x6f
+mem_RAIO_lo:   .word 0
+mem_RAIO_hi:   .word 0
+mem_RAIO_init: .word 0
+mem_VMAX_lo:   .word 0
+mem_VMAX_hi:   .word 0
+mem_VMAX_init: .word 0
 
 .text
 .global _start
@@ -172,6 +178,769 @@ _start:
   MOV R5, #0
   LDR R6, =resultados
   MOV R7, #0
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40000000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40080000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FADDD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40100000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x3ff00000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FSUBD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FMULD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40590000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40180000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FDIVD D0, D0, D1
+  BL floor_d0
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x403d0000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40180000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FCPYD D3, D0
+  FDIVD D0, D0, D1
+  BL floor_d0
+  FMULD D0, D0, D1
+  FSUBD D0, D3, D0
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40000000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40240000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FTOSID S6, D1
+  FMRS R11, S6
+  BL pot_int
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x51eb851f
+  LDR R1, =0x40091eb8
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FMRRD R0, R1, D0
+  LDR R2, =mem_RAIO_lo
+  STR R0, [R2]
+  LDR R2, =mem_RAIO_hi
+  STR R1, [R2]
+  LDR R2, =mem_RAIO_init
+  MOV R3, #1
+  STR R3, [R2]
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =mem_RAIO_lo
+  LDR R1, =mem_RAIO_hi
+  LDR R0, [R0]
+  LDR R1, [R1]
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =mem_RAIO_lo
+  LDR R1, =mem_RAIO_hi
+  LDR R0, [R0]
+  LDR R1, [R1]
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FMULD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x51eb851f
+  LDR R1, =0x40091eb8
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FMULD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x3ff00000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  FTOSID S8, D1
+  FMRS R8, S8
+  MOV R9, #6
+  SUB R9, R9, R8
+  CMP R9, #0
+  MOVLT R9, #0
+  LSL R9, R9, #3
+  ADD R9, R6, R9
+  FLDD D0, [R9]
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40490000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40390000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FSUBD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =mem_RAIO_lo
+  LDR R1, =mem_RAIO_hi
+  LDR R0, [R0]
+  LDR R1, [R1]
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40000000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FTOSID S6, D1
+  FMRS R11, S6
+  BL pot_int
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40000000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  FTOSID S8, D1
+  FMRS R8, S8
+  MOV R9, #9
+  SUB R9, R9, R8
+  CMP R9, #0
+  MOVLT R9, #0
+  LSL R9, R9, #3
+  ADD R9, R6, R9
+  FLDD D0, [R9]
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40240000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40000000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FDIVD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40080000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40100000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FADDD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FSUBD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x40140000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  FTOSID S8, D1
+  FMRS R8, S8
+  MOV R9, #11
+  SUB R9, R9, R8
+  CMP R9, #0
+  MOVLT R9, #0
+  LSL R9, R9, #3
+  ADD R9, R6, R9
+  FLDD D0, [R9]
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =0x00000000
+  LDR R1, =0x401c0000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FMRRD R0, R1, D0
+  LDR R2, =mem_VMAX_lo
+  STR R0, [R2]
+  LDR R2, =mem_VMAX_hi
+  STR R1, [R2]
+  LDR R2, =mem_VMAX_init
+  MOV R3, #1
+  STR R3, [R2]
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =mem_VMAX_lo
+  LDR R1, =mem_VMAX_hi
+  LDR R0, [R0]
+  LDR R1, [R1]
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40080000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FCPYD D3, D0
+  FDIVD D0, D0, D1
+  BL floor_d0
+  FMULD D0, D0, D1
+  FSUBD D0, D3, D0
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
+  MOV R5, #0
+  LDR R0, =mem_VMAX_lo
+  LDR R1, =mem_VMAX_hi
+  LDR R0, [R0]
+  LDR R1, [R1]
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40000000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FMULD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =mem_RAIO_lo
+  LDR R1, =mem_RAIO_hi
+  LDR R0, [R0]
+  LDR R1, [R1]
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  LDR R0, =0x00000000
+  LDR R1, =0x40080000
+  FMDRR D0, R0, R1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FADDD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D1, [R8]
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  FDIVD D0, D0, D1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FSTD D0, [R8]
+  ADD R5, R5, #1
+  SUB R5, R5, #1
+  LSL R8, R5, #3
+  ADD R8, R4, R8
+  FLDD D0, [R8]
+  LSL R8, R7, #3
+  ADD R8, R6, R8
+  FSTD D0, [R8]
+  ADD R7, R7, #1
+  LDR R9, =num_results
+  STR R7, [R9]
+  BL display_result
+  BL delay_sub
+  BL wait_key
 final_loop:
   LDR R9, =num_results
   LDR R7, [R9]
